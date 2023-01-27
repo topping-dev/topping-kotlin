@@ -71,9 +71,9 @@ kotlin {
 
 android {
     namespace = "dev.topping.kotlin"
-    compileSdk = 32
+    compileSdk = 31
     defaultConfig {
         minSdk = 21
-        targetSdk = 32
+        targetSdk = 31
     }
 }

@@ -4,7 +4,7 @@ expect open class LuaNavHostFragment
 {
    fun getContext(): LuaContext
    fun isInitialized(): Boolean
-   fun getViewById(lId: LuaRef): LGView?
+   fun <T> getViewById(lId: LuaRef): T?
    fun getView(): LGView?
    fun setView(v: LGView?)
    fun setViewXML(xml: LuaRef)

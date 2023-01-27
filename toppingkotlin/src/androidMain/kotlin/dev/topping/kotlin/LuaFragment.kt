@@ -32,9 +32,8 @@ actual open class LuaFragment : KTInterface
    actual open fun isInitialized(): Boolean {
        return luaFragment?.isInitialized()!!
    }
-   actual open fun getViewById(lId: LuaRef): LGView?
-   {
-       return KTWrap.Wrap(luaFragment?.getViewById(lId.luaRef!!)) as LGView?
+   actual open fun <T> getViewById(lId: LuaRef): T? {
+       return KTWrap.Wrap(luaFragment?.getViewById(lId.luaRef!!)) as T?
    }
    actual open fun getView(): LGView?
    {

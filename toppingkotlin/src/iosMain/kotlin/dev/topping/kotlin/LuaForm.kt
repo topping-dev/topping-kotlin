@@ -27,9 +27,8 @@ actual open class LuaForm : KTInterface
        pobj.SetNativeObject(obj)
        return pobj
    }
-    actual fun getViewById(lId: LuaRef?): LGView?
-    {
-        return KTWrap.Wrap(luaForm?.getViewById((lId?.luaRef!!))) as LGView?
+    actual fun <T> getViewById(lId: LuaRef?): T? {
+        return KTWrap.Wrap(luaForm?.getViewById((lId?.luaRef!!))) as T?
     }
     actual fun getBindings(): Map<String, LGView>?
     {

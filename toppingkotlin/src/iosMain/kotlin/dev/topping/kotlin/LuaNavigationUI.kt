@@ -8,28 +8,28 @@ actual open class LuaNavigationUI : KTInterface
 
     actual companion object {
         actual fun navigateUp(navController: LuaNavController, configuration: LuaAppBarConfiguration) {
-            NavigationUI.navigateUpWithNavController((KTWrap.UnWrap(navController) as cocoapods.Topping.LuaNavController), (KTWrap.UnWrap(configuration) as cocoapods.Topping.LuaAppBarConfiguration))
+            NavigationUI.navigateUpWithNavController(navController.luaNavController!!, configuration.luaAppBarConfiguration!!)
         }
         actual fun navigateUp(navController: LuaNavController, openableLayout: LGView) {
-            NavigationUI.navigateUpWithNavController((KTWrap.UnWrap(navController) as cocoapods.Topping.LuaNavController), KTWrap.UnWrap(openableLayout) as cocoapods.Topping.LGView)
+            NavigationUI.navigateUpWithNavController(navController.luaNavController!!, openableLayout.lgView!!)
         }
         actual fun setupActionBarWithNavController(form: LuaForm, navController: LuaNavController) {
-            NavigationUI.setupActionBarWithNavControllerWithForm(KTWrap.UnWrap(form) as cocoapods.Topping.LuaForm, (KTWrap.UnWrap(navController) as cocoapods.Topping.LuaNavController))
+            NavigationUI.setupActionBarWithNavControllerWithForm(form.luaForm!!, navController.luaNavController!!)
         }
         actual fun setupActionBarWithNavController(form: LuaForm, navController: LuaNavController, openableLayout: LGView) {
-            NavigationUI.setupActionBarWithNavControllerWithForm(KTWrap.UnWrap(form) as cocoapods.Topping.LuaForm, (KTWrap.UnWrap(navController) as cocoapods.Topping.LuaNavController), KTWrap.UnWrap(openableLayout) as cocoapods.Topping.LGView)
+            NavigationUI.setupActionBarWithNavControllerWithForm(form.luaForm!!, navController.luaNavController!!, openableLayout.lgView!!)
         }
         actual fun setupActionBarWithNavController(form: LuaForm, navController: LuaNavController, configuration: LuaAppBarConfiguration) {
-            NavigationUI.setupActionBarWithNavControllerWithForm(KTWrap.UnWrap(form) as cocoapods.Topping.LuaForm, (KTWrap.UnWrap(navController) as cocoapods.Topping.LuaNavController), (KTWrap.UnWrap(configuration) as cocoapods.Topping.LuaAppBarConfiguration))
+            NavigationUI.setupActionBarWithNavControllerWithForm(form.luaForm!!, navController.luaNavController!!, configuration.luaAppBarConfiguration!!)
         }
         actual fun setupWithNavController(toolbar: LGToolbar, navController: LuaNavController) {
-            NavigationUI.setupWithNavControllerWithToolbar(KTWrap.UnWrap(toolbar) as cocoapods.Topping.LGToolbar, (KTWrap.UnWrap(navController) as cocoapods.Topping.LuaNavController))
+            NavigationUI.setupWithNavControllerWithToolbar(toolbar.lgToolbar!!, navController.luaNavController!!)
         }
         actual fun setupWithNavController(toolbar: LGToolbar, navController: LuaNavController, openableLayout: LGView) {
-            NavigationUI.setupWithNavControllerWithToolbar(KTWrap.UnWrap(toolbar) as cocoapods.Topping.LGToolbar, (KTWrap.UnWrap(navController) as cocoapods.Topping.LuaNavController), KTWrap.UnWrap(openableLayout) as cocoapods.Topping.LGView)
+            NavigationUI.setupWithNavControllerWithToolbar(toolbar.lgToolbar!!, navController.luaNavController!!, openableLayout.lgView!!)
         }
         actual fun setupWithNavController(toolbar: LGToolbar, navController: LuaNavController, configuration: LuaAppBarConfiguration) {
-            NavigationUI.setupWithNavControllerWithToolbar(KTWrap.UnWrap(toolbar) as cocoapods.Topping.LGToolbar, (KTWrap.UnWrap(navController) as cocoapods.Topping.LuaNavController), (KTWrap.UnWrap(configuration) as cocoapods.Topping.LuaAppBarConfiguration))
+            NavigationUI.setupWithNavControllerWithToolbar(toolbar.lgToolbar!!, navController.luaNavController!!, configuration.luaAppBarConfiguration!!)
         }
     }
 

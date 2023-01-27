@@ -8,8 +8,8 @@ expect open class LuaFragment() {
    }
    fun getContext(): LuaContext
     fun isInitialized(): Boolean
-    fun getViewById(lId: LuaRef): LGView?
-   fun getView(): LGView?
+    fun <T> getViewById(lId: LuaRef): T?
+    fun getView(): LGView?
    fun setView(v: LGView?)
    fun setViewXML(xml: LuaRef)
    fun setViewId(luaId: String)

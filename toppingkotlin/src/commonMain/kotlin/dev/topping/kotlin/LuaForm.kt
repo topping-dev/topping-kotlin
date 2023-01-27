@@ -8,8 +8,8 @@ expect open class LuaForm
         fun getActiveForm(): LuaForm?
    }
    fun getContext(): LuaContext?
-   fun getViewById(lId: LuaRef?): LGView?
-   fun getBindings(): Map<String, LGView>?
+   fun <T> getViewById(lId: LuaRef?): T?
+    fun getBindings(): Map<String, LGView>?
    fun getView(): LGView?
    fun setView(v: LGView?)
    fun setViewXML(xml: LuaRef)

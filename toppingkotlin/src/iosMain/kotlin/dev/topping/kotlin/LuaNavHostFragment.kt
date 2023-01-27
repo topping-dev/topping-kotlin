@@ -12,9 +12,8 @@ actual open class LuaNavHostFragment : LuaFragment()
    actual override fun isInitialized(): Boolean {
        return luaNavHostFragment?.isInitialized()!!
    }
-   actual override fun getViewById(lId: LuaRef): LGView?
-   {
-       return KTWrap.Wrap(luaNavHostFragment?.getViewById(lId.luaRef)) as LGView?
+   actual override fun <T> getViewById(lId: LuaRef): T? {
+       return KTWrap.Wrap(luaNavHostFragment?.getViewById(lId.luaRef)) as T?
    }
    actual override fun getView(): LGView?
    {
