@@ -23,7 +23,7 @@ actual class Platform actual constructor() {
 
             val handler: dev.topping.android.backend.LuaLoadHandler = object : dev.topping.android.backend.LuaLoadHandler(activityOrWindow as Activity?, ht.looper) {
                 override fun onFinished() {
-                    val lf: dev.topping.android.LuaForm = activityOrWindow as dev.topping.android.LuaForm;
+                    val lf: dev.topping.android.LuaForm = activityOrWindow as dev.topping.android.LuaForm
                     luaId = luaEngine.mainForm
                     val initUI = luaEngine.mainUI
                     if (initUI.compareTo("") != 0) {
@@ -33,7 +33,7 @@ actual class Platform actual constructor() {
                         lf.setContentView(view?.view);
                     }
                     lf.runOnUiThread {
-                        dev.topping.android.LuaEvent.onUIEvent(lf, dev.topping.android.LuaEvent.UI_EVENT_CREATE, luaContext)
+                        (activityOrWindow as dev.topping.android.LuaForm).afterInit()
                     }
                     ht.quit()
                     onComplete.onComplete();
