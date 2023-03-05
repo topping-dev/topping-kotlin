@@ -23,6 +23,7 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "toppingkotlin"
+            embedBitcode = org.jetbrains.kotlin.gradle.plugin.mpp.Framework.BitcodeEmbeddingMode.DISABLE
             xcf.add(this)
         }
     }
@@ -33,6 +34,11 @@ kotlin {
             url("https://github.com/Deadknight/dk-specs.git")
         }
         pod("Topping", "0.1.7")
+        framework {
+            // ---> HERE: If true (or omitted) linking fails, missing symbols are from "Topping" dependency
+            // if false, then linking succeeds as per Kotlin 1.7 behaviour
+            isStatic = false
+        }
     }
 
     sourceSets {
