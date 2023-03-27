@@ -12,7 +12,7 @@ actual open class LuaThread : KTInterface
         {
             dev.topping.android.LuaThread.runOnBackground(func.toLuaTranslator(null))
         }
-        actual fun new(func: () -> Unit): LuaThread {
+        actual fun create(func: () -> Unit): LuaThread {
             val pobj = LuaThread()
             val pres = dev.topping.android.LuaThread.create(func.toLuaTranslator(null))
             pobj.SetNativeObject(pres)

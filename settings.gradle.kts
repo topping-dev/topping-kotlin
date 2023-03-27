@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "topping-kotlin"
 include(":toppingkotlin")
+includeBuild("convention-plugins")

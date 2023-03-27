@@ -11,13 +11,13 @@ actual open class LGToolbar : LGView()
     {
         lgToolbar?.setLogo(logo?.luaRef)
     }
-    actual fun setNavigationIcon(logo: LuaRef?)
+    actual fun setNavigationIcon(icon: LuaRef?)
     {
-        lgToolbar?.setNavigationIcon(logo?.luaRef)
+        lgToolbar?.setNavigationIcon(icon?.luaRef)
     }
-    actual fun setOverflowIcon(logo: LuaRef?)
+    actual fun setOverflowIcon(icon: LuaRef?)
     {
-        lgToolbar?.setOverflowIcon(logo?.luaRef)
+        lgToolbar?.setOverflowIcon(icon?.luaRef)
     }
     actual fun getTitle() : String?
     {

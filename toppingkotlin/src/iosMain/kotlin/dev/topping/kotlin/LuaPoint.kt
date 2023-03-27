@@ -4,15 +4,15 @@ actual open class LuaPoint : KTInterface
 {
    var luaPoint: cocoapods.Topping.LuaPoint? = null
    actual companion object {
-        actual fun createPoint(): LuaPoint {
+        actual fun create(): LuaPoint {
             val pobj = LuaPoint()
-            val pres = cocoapods.Topping.LuaPoint.createPoint()
+            val pres = cocoapods.Topping.LuaPoint.create()
             pobj.SetNativeObject(pres)
             return pobj
         }
-        actual fun createPointPar(x: Float, y: Float): LuaPoint {
+        actual fun create(x: Float, y: Float): LuaPoint {
             val pobj = LuaPoint()
-            val pres = cocoapods.Topping.LuaPoint.createPointPar(x, y)
+            val pres = cocoapods.Topping.LuaPoint.createPar(x, y)
             pobj.SetNativeObject(pres)
             return pobj
         }

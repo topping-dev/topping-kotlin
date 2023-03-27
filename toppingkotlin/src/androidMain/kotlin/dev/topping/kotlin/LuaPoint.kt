@@ -4,15 +4,15 @@ actual open class LuaPoint : KTInterface
 {
    var luaPoint: dev.topping.android.LuaPoint? = null
    actual companion object {
-        actual fun createPoint(): LuaPoint {
+        actual fun create(): LuaPoint {
             val pobj = LuaPoint()
-            val pres = dev.topping.android.LuaPoint.createPoint()
+            val pres = dev.topping.android.LuaPoint.create()
             pobj.SetNativeObject(pres)
             return pobj
         }
-        actual fun createPointPar(x: Float, y: Float): LuaPoint {
+        actual fun create(x: Float, y: Float): LuaPoint {
             val pobj = LuaPoint()
-            val pres = dev.topping.android.LuaPoint.createPointPar(x, y)
+            val pres = dev.topping.android.LuaPoint.createPar(x, y)
             pobj.SetNativeObject(pres)
             return pobj
         }

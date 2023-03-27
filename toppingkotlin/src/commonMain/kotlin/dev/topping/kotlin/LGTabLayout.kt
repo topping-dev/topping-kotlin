@@ -1,9 +1,15 @@
 package dev.topping.kotlin
 
-expect open class LGTabLayout : LGFrameLayout
-{
-   companion object {
-        //fun create(lc: LuaContext?): LGTabLayout?
-   }
+/**
+ * Tab layout
+ */
+expect open class LGTabLayout : LGFrameLayout {
+    companion object {
+    }
+
+    /**
+     * Set tab selected listener
+     * @param ltTabSelectedListener
+     */
     fun setTabSelectedListener(func: ((LGTabLayout, LuaTab) -> Unit)?)
 }

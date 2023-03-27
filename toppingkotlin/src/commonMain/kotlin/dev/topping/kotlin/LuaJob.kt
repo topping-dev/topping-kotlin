@@ -1,6 +1,11 @@
 package dev.topping.kotlin
 
-expect class LuaJob
-{
+/**
+ * Lua Job
+ */
+expect class LuaJob {
+    /**
+     * cancel jobs
+     */
     fun cancel()
 }

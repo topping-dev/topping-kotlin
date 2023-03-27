@@ -5,6 +5,8 @@ plugins {
     id("com.android.library")
     kotlin("native.cocoapods")
     id("maven-publish")
+    id("convention.publication")
+    id("org.jetbrains.dokka")
 }
 
 group = "dev.topping"
@@ -30,10 +32,10 @@ kotlin {
 
     cocoapods {
         version = "1.11.0"
-        specRepos {
+        /*specRepos {
             url("https://github.com/Deadknight/dk-specs.git")
-        }
-        pod("Topping", "0.1.7")
+        }*/
+        pod("Topping", "0.5.0")
         framework {
             // ---> HERE: If true (or omitted) linking fails, missing symbols are from "Topping" dependency
             // if false, then linking succeeds as per Kotlin 1.7 behaviour
@@ -83,3 +85,5 @@ android {
         targetSdk = 31
     }
 }
+
+ext["version"] = version.toString()

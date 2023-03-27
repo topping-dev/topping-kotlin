@@ -12,9 +12,9 @@ actual open class LuaThread : KTInterface
         {
             cocoapods.Topping.LuaThread.runOnBackground(func.toLuaTranslator(null))
         }
-        actual fun new(func: () -> Unit): LuaThread {
+        actual fun create(func: () -> Unit): LuaThread {
             val pobj = LuaThread()
-            val pres = cocoapods.Topping.LuaThread.new(func.toLuaTranslator(null))
+            val pres = cocoapods.Topping.LuaThread.create(func.toLuaTranslator(null))
             pobj.SetNativeObject(pres)
             return pobj
         }

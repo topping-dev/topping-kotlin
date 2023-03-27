@@ -1,5 +1,8 @@
 package dev.topping.kotlin
 
+/**
+ * User interface fragment
+ */
 expect open class LuaNavHostFragment
 {
    fun getContext(): LuaContext

@@ -4,15 +4,15 @@ actual open class LuaRect : KTInterface
 {
    var luaRect: cocoapods.Topping.LuaRect? = null
    actual companion object {
-        actual fun createRect(): LuaRect {
+        actual fun create(): LuaRect {
             val pobj = LuaRect()
-            val pres = cocoapods.Topping.LuaRect.createRect()
+            val pres = cocoapods.Topping.LuaRect.create()
             pobj.SetNativeObject(pres)
             return pobj
         }
-        actual fun createRectPar(left: Float, top: Float, right: Float, bottom: Float): LuaRect {
+        actual fun create(left: Float, top: Float, right: Float, bottom: Float): LuaRect {
             val pobj = LuaRect()
-            val pres = cocoapods.Topping.LuaRect.createRectPar(left!!, top!!, right!!, bottom!!)
+            val pres = cocoapods.Topping.LuaRect.createPar(left, top, right, bottom!!)
             pobj.SetNativeObject(pres)
             return pobj
         }

@@ -1,13 +1,40 @@
 package dev.topping.kotlin
 
-expect open class LuaMenu
-{
-   companion object {
-       fun create(lc: LuaContext, id: LuaRef): LuaMenu
-   }
+/**
+ * Menu Item for menu resources
+ */
+expect open class LuaMenu {
+    companion object {
+        /**
+         * Create menu item
+         * @param context
+         * @param idVal
+         * @return
+         */
+        fun create(lc: LuaContext, id: LuaRef): LuaMenu
+    }
 
-    fun getItemId() : LuaRef
+    /**
+     * Get item id
+     * @return id
+     */
+    fun getItemId(): LuaRef
+
+    /**
+     * Set title
+     * @param text
+     */
     fun setTitle(text: String)
+
+    /**
+     * Set title
+     * @param text LuaRef
+     */
     fun setTitle(text: LuaRef)
+
+    /**
+     * Set Icon
+     * @param icon
+     */
     fun setIcon(icon: LuaRef)
 }

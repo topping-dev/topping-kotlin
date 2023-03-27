@@ -1,12 +1,36 @@
 package dev.topping.kotlin
 
-expect open class LuaViewModelProvider
-{
-   companion object {
-      fun of(fragment: LuaFragment): LuaViewModelProvider
-      fun of(form: LuaForm): LuaViewModelProvider
-   }
+/**
+ * View model provider
+ */
+expect open class LuaViewModelProvider {
+    companion object {
+        /**
+         * Get LuaViewModelProvider of LuaFragment
+         * @param fragment
+         * @return LuaViewModelProvider
+         */
+        fun of(fragment: LuaFragment): LuaViewModelProvider
 
-   fun get(key: String): LuaViewModel
-   inline fun <reified T:Any> get(key: String, obj: T): T
+        /**
+         * Get LuaViewModelProvider of LuaForm
+         * @param form
+         * @return LuaViewModelProvider
+         */
+        fun of(form: LuaForm): LuaViewModelProvider
+    }
+
+    /**
+     * Get view model
+     * @param tag
+     * @return LuaViewModel
+     */
+    fun get(key: String): LuaViewModel
+
+    /**
+     * Get view model
+     * @param tag
+     * @return LuaViewModel
+     */
+    inline fun <reified T : Any> get(key: String, obj: T): T
 }

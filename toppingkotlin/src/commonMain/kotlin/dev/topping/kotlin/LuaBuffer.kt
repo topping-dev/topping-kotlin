@@ -1,10 +1,29 @@
 package dev.topping.kotlin
 
-expect open class LuaBuffer
-{
-   companion object {
+/**
+ * Class that is used in buffer operations
+ */
+expect open class LuaBuffer {
+    companion object {
+        /**
+         * Creates a buffer
+         * @param capacity
+         * @return LuaBuffer
+         */
         fun create(capacity: Int): LuaBuffer
-   }
-   fun getByte(index: Int): Int?
-   fun setByte(index: Int, value: Int)
+    }
+
+    /**
+     * Gets byte from index
+     * @param index
+     * @return int
+     */
+    fun getByte(index: Int): Int?
+
+    /**
+     * Set Byte at index
+     * @param index
+     * @param value
+     */
+    fun setByte(index: Int, value: Int)
 }

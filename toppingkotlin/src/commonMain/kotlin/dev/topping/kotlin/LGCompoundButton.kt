@@ -1,8 +1,15 @@
 package dev.topping.kotlin
 
-expect open class LGCompoundButton : LGButton
-{
-   companion object {
+/**
+ * Compound Button
+ */
+expect open class LGCompoundButton : LGButton {
+    companion object {
+        /**
+         * Creates LGCompoundButton Object From Lua.
+         * @param lc
+         * @return LGCompoundButton
+         */
         fun create(lc: LuaContext): LGCompoundButton
-   }
+    }
 }

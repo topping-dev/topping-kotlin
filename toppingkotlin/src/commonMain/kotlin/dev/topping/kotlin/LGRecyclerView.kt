@@ -1,8 +1,24 @@
 package dev.topping.kotlin
 
-expect open class LGRecyclerView : LGView
-{
-   fun getAdapter(): LGRecyclerViewAdapter?
-   fun setAdapter(adapter: LGRecyclerViewAdapter?)
-   fun setAdapter(ltInit: LuaTranslator)
+/**
+ * RecyclerView
+ */
+expect open class LGRecyclerView : LGView {
+    /**
+     * Gets the LGRecyclerViewAdapter of recyclerview
+     * @return LGRecyclerViewAdapter
+     */
+    fun getAdapter(): LGRecyclerViewAdapter?
+
+    /**
+     * Sets the LGRecyclerViewAdapter of listview
+     * @param adapter
+     */
+    fun setAdapter(adapter: LGRecyclerViewAdapter?)
+
+    /**
+     * Sets the LGRecyclerViewAdapter of listview
+     * @param ltInit
+     */
+    fun setAdapter(ltInit: LuaTranslator)
 }

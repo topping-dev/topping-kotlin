@@ -1,8 +1,15 @@
 package dev.topping.kotlin
 
-expect open class LGTextInputEditText : LGEditText
-{
-   companion object {
-       fun create(lc: LuaContext): LGTextInputEditText
-   }
+/**
+ * Material EditText
+ */
+expect open class LGTextInputEditText : LGEditText {
+    companion object {
+        /**
+         * Creates LGTextInputEditText Object From Lua.
+         * @param lc
+         * @return LGTextInputEditText
+         */
+        fun create(lc: LuaContext): LGTextInputEditText
+    }
 }

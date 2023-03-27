@@ -6,38 +6,28 @@ actual open class LuaResource : KTInterface
    actual companion object {
         actual fun getResourceAssetSd(path: String, resName: String): LuaStream?
         {
-            val pobj = LuaStream()
-            val pres = dev.topping.android.LuaResource.getResourceAssetSd(path, resName)
-            pobj.SetNativeObject(pres)
-            return pobj
+            return KTWrap.Wrap(dev.topping.android.LuaResource.getResourceAssetSd(path, resName)) as LuaStream?
         }
         actual fun getResourceSdAsset(path: String, resName: String): LuaStream?
         {
-            val pobj = LuaStream()
-            val pres = dev.topping.android.LuaResource.getResourceSdAsset(path, resName)
-            pobj.SetNativeObject(pres)
-            return pobj
+            return KTWrap.Wrap(dev.topping.android.LuaResource.getResourceSdAsset(path, resName)) as LuaStream?
         }
         actual fun getResourceAsset(path: String, resName: String): LuaStream?
         {
-            val pobj = LuaStream()
-            val pres = dev.topping.android.LuaResource.getResourceAsset(path, resName)
-            pobj.SetNativeObject(pres)
-            return pobj
+            return KTWrap.Wrap(dev.topping.android.LuaResource.getResourceAsset(path, resName)) as LuaStream?
         }
         actual fun getResourceSd(path: String, resName: String): LuaStream?
         {
-            val pobj = LuaStream()
-            val pres = dev.topping.android.LuaResource.getResourceSd(path, resName)
-            pobj.SetNativeObject(pres)
-            return pobj
+            return KTWrap.Wrap(dev.topping.android.LuaResource.getResourceSd(path, resName)) as LuaStream?
         }
         actual fun getResource(path: String, resName: String): LuaStream?
         {
-            val pobj = LuaStream()
-            val pres = dev.topping.android.LuaResource.getResource(path, resName)
-            pobj.SetNativeObject(pres)
-            return pobj
+            return KTWrap.Wrap(dev.topping.android.LuaResource.getResource(path, resName)) as LuaStream?
+        }
+
+        actual fun getResourceRef(ref: LuaRef): LuaStream?
+        {
+            return KTWrap.Wrap(dev.topping.android.LuaResource.getResourceRef(ref.luaRef)) as LuaStream?
         }
    }
     open override fun GetNativeObject(): Any?

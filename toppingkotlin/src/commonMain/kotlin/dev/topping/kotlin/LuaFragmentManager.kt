@@ -1,10 +1,26 @@
 package dev.topping.kotlin
 
-expect open class LuaFragmentManager
-{
-   companion object {
-      fun findFragment(view: LGView) : LuaFragment?
-   }
-   fun findFragmentById(id: Any) : LuaFragment?
-   fun findFragmentByTag(tag: String) : LuaFragment?
+/**
+ * Fragment manager
+ */
+expect open class LuaFragmentManager {
+    companion object {
+        /**
+         * Find LuaFragment with view
+         * @param view
+         */
+        fun findFragment(view: LGView): LuaFragment?
+    }
+
+    /**
+     * Find LuaFragment by id
+     * @param id
+     */
+    fun findFragmentById(id: Any): LuaFragment?
+
+    /**
+     * Find LuaFragment by tag
+     * @param tag
+     */
+    fun findFragmentByTag(tag: String): LuaFragment?
 }

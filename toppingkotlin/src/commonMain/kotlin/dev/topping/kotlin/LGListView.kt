@@ -1,10 +1,27 @@
 package dev.topping.kotlin
 
-expect open class LGListView : LGAbsListView
-{
-   companion object {
+/**
+ * ListView
+ */
+expect open class LGListView : LGAbsListView {
+    companion object {
+        /**
+         * Create list view
+         * @param lc
+         * @return LGListView
+         */
         fun create(lc: LuaContext): LGAbsListView
-   }
-   fun getAdapter(): LGAdapterView?
-   fun setAdapter(adapter: LGAdapterView?)
+    }
+
+    /**
+     * Gets the LGAdapterView of listview
+     * @return LGAdapterView
+     */
+    fun getAdapter(): LGAdapterView?
+
+    /**
+     * Sets the LGAdapterView of listview
+     * @param adapter
+     */
+    fun setAdapter(adapter: LGAdapterView?)
 }
