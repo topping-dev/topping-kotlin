@@ -6,7 +6,7 @@ actual open class LGAdapterView : KTInterface
    actual companion object {
         actual fun create(lc: LuaContext, id: String): LGAdapterView {
             val pobj = LGAdapterView()
-            val pres = android.widget.LGAdapterView.Create(lc.luaContext, id)
+            val pres = android.widget.LGAdapterView.create(lc.luaContext, id)
             pobj.SetNativeObject(pres)
             return pobj
         }
