@@ -32,6 +32,7 @@ kotlin {
 
     cocoapods {
         version = "1.11.0"
+        ios.deploymentTarget = "13.0"
         /*specRepos {
             url("https://github.com/Deadknight/dk-specs.git")
         }*/
