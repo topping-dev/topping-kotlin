@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
     spec.vendored_frameworks      = 'build/cocoapods/framework/toppingkotlin.framework'
     spec.libraries                = 'c++'
                 
-    spec.dependency 'Topping', '0.5.0'
+    spec.dependency 'Topping', '0.5.1'
                 
     spec.pod_target_xcconfig = {
         'KOTLIN_PROJECT_PATH' => ':toppingkotlin',
