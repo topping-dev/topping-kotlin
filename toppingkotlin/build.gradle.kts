@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "dev.topping"
-version = "0.5.1"
+version = "0.5.2"
 
 kotlin {
     android {
@@ -36,7 +36,7 @@ kotlin {
         /*specRepos {
             url("https://github.com/Deadknight/dk-specs.git")
         }*/
-        pod("Topping", "0.5.1")
+        pod("Topping", "0.5.2")
         framework {
             // ---> HERE: If true (or omitted) linking fails, missing symbols are from "Topping" dependency
             // if false, then linking succeeds as per Kotlin 1.7 behaviour
@@ -61,7 +61,7 @@ kotlin {
                 implementation ("androidx.navigation:navigation-ui-ktx:2.3.5")
                 implementation ("androidx.navigation:navigation-dynamic-features-fragment:2.3.5")
                 implementation ("com.google.android.material:material:1.4.0")
-                implementation("dev.topping:toppingandroid:0.5.1")
+                implementation("dev.topping:toppingandroid:0.5.2")
             }
         }
         val iosX64Main by getting

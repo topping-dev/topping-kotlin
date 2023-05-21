@@ -12,7 +12,7 @@ plugins {
 //Maven publish
 val PUBLISH_GROUP_ID = "dev.topping"
 val PUBLISH_ARTIFACT_ID = "toppingkotlin"
-val PUBLISH_VERSION = "0.5.1"
+val PUBLISH_VERSION = "0.5.2"
 
 ext["signing.keyId"] = ""
 ext["signing.password"] = ""
