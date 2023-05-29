@@ -67,6 +67,9 @@ actual open class LuaFragment : KTInterface
     {
         return KTWrap.Wrap(luaFragment?.getNavController()) as LuaNavController
     }
+    actual open fun getViewLifecycleOwner(): LuaLifecycleOwner {
+        return KTWrap.Wrap(luaFragment?.getLifecycleOwner()) as LuaLifecycleOwner
+    }
     open override fun GetNativeObject(): Any?
    {
        return luaFragment

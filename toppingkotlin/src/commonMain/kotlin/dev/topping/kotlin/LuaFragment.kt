@@ -103,4 +103,9 @@ expect open class LuaFragment() {
      * Get Nav Controller
      */
     fun getNavController(): LuaNavController
+
+    /**
+     * Get View Lifecycle Owner
+     */
+    fun getViewLifecycleOwner(): LuaLifecycleOwner
 }
