@@ -1,5 +1,7 @@
 package dev.topping.kotlin
 
+import cocoapods.Topping.LGIdParser
+
 actual open class LuaFragmentManager : KTInterface
 {
    var luaFragmentManager: cocoapods.Topping.FragmentManager? = null
@@ -12,7 +14,7 @@ actual open class LuaFragmentManager : KTInterface
 
     actual fun findFragmentById(id: Any) : LuaFragment?
     {
-        val idVal = if(id is LuaRef) id.luaRef?.getCleanId() ?: "" else id as String
+        val idVal = if(id is LuaRef) LGIdParser.getInstance()?.getId(id.luaRef?.idRef) ?: "" else id as String
         return KTWrap.Wrap(luaFragmentManager?.findFragmentByIdWithId(idVal)) as LuaFragment?
     }
 

@@ -10,7 +10,9 @@ plugins {
 }
 
 group = "dev.topping"
-version = "0.5.3"
+version = "0.6.0"
+
+project.ext.set("versionStr", version)
 
 kotlin {
     android {
@@ -27,16 +29,18 @@ kotlin {
             baseName = "toppingkotlin"
             embedBitcode = org.jetbrains.kotlin.gradle.plugin.mpp.Framework.BitcodeEmbeddingMode.DISABLE
             xcf.add(this)
+            linkerOpts("-framework", "IOSKotlinHelper.framework")
         }
     }
 
     cocoapods {
         version = "1.11.0"
         ios.deploymentTarget = "13.0"
-        /*specRepos {
+        specRepos {
             url("https://github.com/Deadknight/dk-specs.git")
-        }*/
-        pod("Topping", "0.5.3")
+        }
+        //pod("ToppingIOSKotlinHelper", project.ext["versionStr"].toString())
+        pod("Topping", project.ext["versionStr"].toString())
         framework {
             // ---> HERE: If true (or omitted) linking fails, missing symbols are from "Topping" dependency
             // if false, then linking succeeds as per Kotlin 1.7 behaviour
@@ -61,7 +65,7 @@ kotlin {
                 implementation ("androidx.navigation:navigation-ui-ktx:2.3.5")
                 implementation ("androidx.navigation:navigation-dynamic-features-fragment:2.3.5")
                 implementation ("com.google.android.material:material:1.4.0")
-                implementation("dev.topping:toppingandroid:0.5.3")
+                implementation("dev.topping:toppingandroid:${version}")
             }
         }
         val iosX64Main by getting
@@ -86,5 +90,3 @@ android {
         targetSdk = 31
     }
 }
-
-ext["version"] = version.toString()

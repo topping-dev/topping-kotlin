@@ -11,10 +11,6 @@ actual open class LGView : KTInterface
             return pobj
         }
    }
-   actual fun getViewById(lId: LuaRef): LGView?
-   {
-       return KTWrap.Wrap(lgView?.getViewById(lId.luaRef)) as LGView?
-   }
    actual fun setEnabled(value: Boolean)
    {
        lgView?.setEnabled(value)

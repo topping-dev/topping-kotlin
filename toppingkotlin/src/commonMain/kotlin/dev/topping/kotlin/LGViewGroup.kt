@@ -10,4 +10,23 @@ expect open class LGViewGroup : LGView {
          */
         fun create(lc: LuaContext): LGViewGroup
     }
+
+    /**
+     * Get view by id
+     * @param lId
+     * @return LGView
+     */
+    fun getViewById(lId: LuaRef): LGView?
+
+    /**
+     * Add view to group
+     * @param view
+     */
+    fun addView(view: LGView)
+
+    /**
+     * Remove view from group
+     * @param view
+     */
+    fun removeView(view: LGView)
 }

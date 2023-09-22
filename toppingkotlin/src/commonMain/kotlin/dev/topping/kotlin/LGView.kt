@@ -11,13 +11,6 @@ expect open class LGView {
     }
 
     /**
-     * Get view by id
-     * @param lId
-     * @return LGView
-     */
-    fun getViewById(lId: LuaRef): LGView?
-
-    /**
      * Set enabled
      * @param value
      */

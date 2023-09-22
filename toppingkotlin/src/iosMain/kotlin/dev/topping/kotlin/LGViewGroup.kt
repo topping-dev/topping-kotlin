@@ -11,6 +11,16 @@ actual open class LGViewGroup : LGView()
             return pobj
         }
    }
+    actual fun getViewById(lId: LuaRef): LGView?
+    {
+        return KTWrap.Wrap(lgView?.getViewById(lId.luaRef)) as LGView?
+    }
+    actual fun addView(view: LGView) {
+        lgViewGroup?.addSubview(view.lgView)
+    }
+    actual fun removeView(view: LGView) {
+        lgViewGroup?.removeSubview(view.lgView)
+    }
    open override fun GetNativeObject(): Any?
    {
        return lgViewGroup
