@@ -27,9 +27,8 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "toppingkotlin"
-            embedBitcode = org.jetbrains.kotlin.gradle.plugin.mpp.Framework.BitcodeEmbeddingMode.DISABLE
+            embedBitcode(org.jetbrains.kotlin.gradle.plugin.mpp.Framework.BitcodeEmbeddingMode.DISABLE)
             xcf.add(this)
-            linkerOpts("-framework", "IOSKotlinHelper.framework")
         }
     }
 

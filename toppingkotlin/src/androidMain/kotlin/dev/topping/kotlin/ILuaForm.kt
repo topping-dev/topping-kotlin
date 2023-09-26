@@ -17,13 +17,15 @@ actual open class ILuaForm actual constructor(form: Any) : KTInterface {
     actual open fun onResume() {}
     actual open fun onPause() {}
     actual open fun onDestroy() {}
-    actual fun getForm(): LuaForm { return form }
-    open override fun GetNativeObject(): Any?
-    {
+    actual fun getForm(): LuaForm {
+        return form
+    }
+
+    open override fun GetNativeObject(): Any? {
         return iLuaForm
     }
-    open override fun SetNativeObject(par :Any?)
-    {
+
+    open override fun SetNativeObject(par: Any?) {
         iLuaForm = par as dev.topping.android.ILuaForm?
     }
 }

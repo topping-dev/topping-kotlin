@@ -1,11 +1,14 @@
 package dev.topping.kotlin
 
+import dev.topping.kotlin.resource.LuaBundle
+import dev.topping.kotlin.widgets.LGView
+
 expect open class ILuaFragment(fragment: Any) {
     open fun onCreate(savedInstanceState: LuaBundle?)
     open fun onCreateView(luacontext: LuaContext,
-                              inflater: LuaViewInflator,
-                              container: LGView?,
-                              savedInstanceState: LuaBundle?): LGView
+                          inflater: LuaViewInflator,
+                          container: LGView?,
+                          savedInstanceState: LuaBundle?): LGView
 
     open fun onViewCreated(
         view: LGView,

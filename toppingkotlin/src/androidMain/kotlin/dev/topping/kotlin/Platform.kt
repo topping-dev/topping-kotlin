@@ -4,6 +4,14 @@ import android.app.Activity
 import android.os.HandlerThread
 import android.os.Process
 import dev.topping.android.ToppingEngine
+import dev.topping.kotlin.graphics.LuaGraphics
+import dev.topping.kotlin.graphics.LuaPoint
+import dev.topping.kotlin.graphics.LuaRect
+import dev.topping.kotlin.libs.*
+import dev.topping.kotlin.lifecycle.*
+import dev.topping.kotlin.navigation.*
+import dev.topping.kotlin.resource.*
+import dev.topping.kotlin.widgets.*
 
 actual class Platform actual constructor() {
     actual companion object {
@@ -13,7 +21,8 @@ actual class Platform actual constructor() {
         private var retBindingMap: HashMap<Any, Any>? = null
 
         actual fun init(activityOrWindow: Any, onBeforeInit: OnBeforeInit, onComplete: OnComplete) {
-            luaContext = dev.topping.android.luagui.LuaContext.createLuaContext(activityOrWindow as Activity?)
+            luaContext =
+                dev.topping.android.luagui.LuaContext.createLuaContext(activityOrWindow as Activity?)
 
             val luaEngine = dev.topping.android.ToppingEngine.getInstance()
             ToppingEngine.getInstance().context = luaContext?.context
@@ -21,9 +30,14 @@ actual class Platform actual constructor() {
             val ht = HandlerThread("Lua Loader Thread", Process.THREAD_PRIORITY_URGENT_DISPLAY)
             ht.start()
 
-            val handler: dev.topping.android.backend.LuaLoadHandler = object : dev.topping.android.backend.LuaLoadHandler(activityOrWindow as Activity?, ht.looper) {
+            val handler: dev.topping.android.backend.LuaLoadHandler = object :
+                dev.topping.android.backend.LuaLoadHandler(
+                    activityOrWindow as Activity?,
+                    ht.looper
+                ) {
                 override fun onFinished() {
-                    val lf: dev.topping.android.LuaForm = activityOrWindow as dev.topping.android.LuaForm
+                    val lf: dev.topping.android.LuaForm =
+                        activityOrWindow as dev.topping.android.LuaForm
                     luaId = luaEngine.mainForm
                     val initUI = luaEngine.mainUI
                     if (initUI.compareTo("") != 0) {
@@ -47,8 +61,7 @@ actual class Platform actual constructor() {
         }
 
         actual fun getBindings(): HashMap<Any, Any>? {
-            if(bindingMap == null)
-            {
+            if (bindingMap == null) {
                 bindingMap = hashMapOf(
                     android.widget.LGAbsListView::class to LGAbsListView::class,
                     android.widget.LGAdapterView::class to LGAdapterView::class,

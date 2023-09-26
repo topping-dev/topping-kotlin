@@ -18,23 +18,20 @@ import kotlin.reflect.KFunction8
 
 class KTWrap {
     companion object {
-        fun Wrap(objIn: Any?): Any?
-        {
-            if(objIn == null)
+        fun Wrap(objIn: Any?): Any? {
+            if (objIn == null)
                 return null
 
             val bindings = Platform.getBindings()
 
-            var itemName : String = objIn.toString()
+            var itemName: String = objIn.toString()
             itemName = itemName.split(":")[0]
             itemName = itemName.substring(1)
 
-            if(bindings?.containsKey(itemName)!!)
-            {
+            if (bindings?.containsKey(itemName)!!) {
                 val cls = bindings[itemName] as KClass<*>
                 val obj = KTClass.createInstance(cls)
-                if(obj is KTInterface)
-                {
+                if (obj is KTInterface) {
                     (obj as KTInterface).SetNativeObject(objIn)
                     return obj
                 }
@@ -43,9 +40,8 @@ class KTWrap {
             return objIn
         }
 
-        fun UnWrap(objIn: Any?): NSObject?
-        {
-            if(objIn is KTInterface) {
+        fun UnWrap(objIn: Any?): NSObject? {
+            if (objIn is KTInterface) {
                 return objIn.GetNativeObject() as NSObject?
             }
 
@@ -75,7 +71,10 @@ class KTWrap {
     var funcStoreL7: Function7<Any?, Any?, Any?, Any?, Any?, Any?, Any?, Any?>? = null
     var funcStoreL8: Function8<Any?, Any?, Any?, Any?, Any?, Any?, Any?, Any?, Any?>? = null
 
-    fun Init(obj: Any?, func: KCallable<Any?>?): CPointer<CFunction<(COpaquePointer?, Int, List<Any?>?) -> NSObject?>> {
+    fun Init(
+        obj: Any?,
+        func: KCallable<Any?>?
+    ): CPointer<CFunction<(COpaquePointer?, Int, List<Any?>?) -> NSObject?>> {
         this.obj = obj
         this.func = func
 
@@ -85,7 +84,10 @@ class KTWrap {
         }
     }
 
-    fun Init(obj: Any?, func: Function<Any?>?): CPointer<CFunction<(COpaquePointer?, Int, List<Any?>?) -> NSObject?>> {
+    fun Init(
+        obj: Any?,
+        func: Function<Any?>?
+    ): CPointer<CFunction<(COpaquePointer?, Int, List<Any?>?) -> NSObject?>> {
         this.obj = obj
         this.funcL = func
 
@@ -185,44 +187,36 @@ class KTWrap {
         this.funcStoreL8 = func
     }
 
-    fun funToCall(self: Int, vars: List<Any?>?): NSObject?
-    {
+    fun funToCall(self: Int, vars: List<Any?>?): NSObject? {
         val valsWrapped: ArrayList<Any> = arrayListOf()
         val bindings = Platform.getBindings()
         val retBindings = Platform.getRetBindings()
-        for((count, item) in vars!!.withIndex())
-        {
-			var itemName : String? = null
-			if(item != null)
-			{
-				itemName = item.toString()
-				itemName = itemName.split(":")[0]
-				itemName = itemName.substring(1)
-			}
-            if(item != null && bindings?.containsKey(itemName as String)!!)
-            {
+        for ((count, item) in vars!!.withIndex()) {
+            var itemName: String? = null
+            if (item != null) {
+                itemName = item.toString()
+                itemName = itemName.split(":")[0]
+                itemName = itemName.substring(1)
+            }
+            if (item != null && bindings?.containsKey(itemName as String)!!) {
                 val cls = bindings[itemName as String] as KClass<*>
                 val obj = KTClass.createInstance(cls)
-                if(obj is KTInterface)
-                {
+                if (obj is KTInterface) {
                     val v = vars[count]
                     (obj as KTInterface).SetNativeObject(v)
                     valsWrapped.add(obj)
-                }
-                else
-                {
+                } else {
                     print("Unknown objc native class " + itemName)
                 }
-            }
-            else
+            } else
                 valsWrapped.add(vars[count]!!)
         }
 
         var ret: Any? = null
         var varsSize = vars.size
-        if(this.obj != null && self == 0)
+        if (this.obj != null && self == 0)
             varsSize++
-        if(func != null) {
+        if (func != null) {
             if (varsSize == 0)
                 Init(this.obj, this.func as KFunction0<Any?>)
             else if (varsSize == 1)
@@ -274,136 +268,232 @@ class KTWrap {
                 )
         }
 
-        if(self == 1)
+        if (self == 1)
             this.obj = null
-        if(funcStore != null) {
+        if (funcStore != null) {
             ret = funcStore?.invoke()
-        }
-        else if(funcStore1 != null)
-        {
-            if(obj != null)
+        } else if (funcStore1 != null) {
+            if (obj != null)
                 ret = funcStore1?.invoke(obj)
             else
                 ret = funcStore1?.invoke(valsWrapped[0])
-        }
-        else if(funcStore2 != null)
-        {
-            if(obj != null)
+        } else if (funcStore2 != null) {
+            if (obj != null)
                 ret = funcStore2?.invoke(obj, valsWrapped[0])
             else
                 ret = funcStore2?.invoke(valsWrapped[0], valsWrapped[1])
-        }
-        else if(funcStore3 != null)
-        {
-            if(obj != null)
+        } else if (funcStore3 != null) {
+            if (obj != null)
                 ret = funcStore3?.invoke(obj, valsWrapped[0], valsWrapped[1])
             else
                 ret = funcStore3?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2])
-        }
-        else if(funcStore4 != null)
-        {
-            if(obj != null)
+        } else if (funcStore4 != null) {
+            if (obj != null)
                 ret = funcStore4?.invoke(obj, valsWrapped[0], valsWrapped[1], valsWrapped[2])
             else
-                ret = funcStore4?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3])
-        }
-        else if(funcStore5 != null)
-        {
-            if(obj != null)
-                ret = funcStore5?.invoke(obj, valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3])
+                ret = funcStore4?.invoke(
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3]
+                )
+        } else if (funcStore5 != null) {
+            if (obj != null)
+                ret = funcStore5?.invoke(
+                    obj,
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3]
+                )
             else
-                ret = funcStore5?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4])
-        }
-        else if(funcStore6 != null)
-        {
-            if(obj != null)
-                ret = funcStore6?.invoke(obj, valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4])
+                ret = funcStore5?.invoke(
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4]
+                )
+        } else if (funcStore6 != null) {
+            if (obj != null)
+                ret = funcStore6?.invoke(
+                    obj,
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4]
+                )
             else
-                ret = funcStore6?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4], valsWrapped[5])
-        }
-        else if(funcStore7 != null)
-        {
-            if(obj != null)
-                ret = funcStore7?.invoke(obj, valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4], valsWrapped[5])
+                ret = funcStore6?.invoke(
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4],
+                    valsWrapped[5]
+                )
+        } else if (funcStore7 != null) {
+            if (obj != null)
+                ret = funcStore7?.invoke(
+                    obj,
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4],
+                    valsWrapped[5]
+                )
             else
-                ret = funcStore7?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4], valsWrapped[5], valsWrapped[6])
-        }
-        else if(funcStore8 != null)
-        {
-            if(obj != null)
-                ret = funcStore8?.invoke(obj, valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4], valsWrapped[5], valsWrapped[6])
+                ret = funcStore7?.invoke(
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4],
+                    valsWrapped[5],
+                    valsWrapped[6]
+                )
+        } else if (funcStore8 != null) {
+            if (obj != null)
+                ret = funcStore8?.invoke(
+                    obj,
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4],
+                    valsWrapped[5],
+                    valsWrapped[6]
+                )
             else
-                ret = funcStore8?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4], valsWrapped[5], valsWrapped[6], valsWrapped[7])
-        } else if(funcStoreL != null) {
+                ret = funcStore8?.invoke(
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4],
+                    valsWrapped[5],
+                    valsWrapped[6],
+                    valsWrapped[7]
+                )
+        } else if (funcStoreL != null) {
             ret = funcStoreL?.invoke()
-        }
-        else if(funcStoreL1 != null)
-        {
-            if(obj != null)
+        } else if (funcStoreL1 != null) {
+            if (obj != null)
                 ret = funcStoreL1?.invoke(obj)
             else
                 ret = funcStoreL1?.invoke(valsWrapped[0])
-        }
-        else if(funcStoreL2 != null)
-        {
-            if(obj != null)
+        } else if (funcStoreL2 != null) {
+            if (obj != null)
                 ret = funcStoreL2?.invoke(obj, valsWrapped[0])
             else
                 ret = funcStoreL2?.invoke(valsWrapped[0], valsWrapped[1])
-        }
-        else if(funcStoreL3 != null)
-        {
-            if(obj != null)
+        } else if (funcStoreL3 != null) {
+            if (obj != null)
                 ret = funcStoreL3?.invoke(obj, valsWrapped[0], valsWrapped[1])
             else
                 ret = funcStoreL3?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2])
-        }
-        else if(funcStoreL4 != null)
-        {
-            if(obj != null)
+        } else if (funcStoreL4 != null) {
+            if (obj != null)
                 ret = funcStoreL4?.invoke(obj, valsWrapped[0], valsWrapped[1], valsWrapped[2])
             else
-                ret = funcStoreL4?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3])
-        }
-        else if(funcStoreL5 != null)
-        {
-            if(obj != null)
-                ret = funcStoreL5?.invoke(obj, valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3])
+                ret = funcStoreL4?.invoke(
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3]
+                )
+        } else if (funcStoreL5 != null) {
+            if (obj != null)
+                ret = funcStoreL5?.invoke(
+                    obj,
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3]
+                )
             else
-                ret = funcStoreL5?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4])
-        }
-        else if(funcStoreL6 != null)
-        {
-            if(obj != null)
-                ret = funcStoreL6?.invoke(obj, valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4])
+                ret = funcStoreL5?.invoke(
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4]
+                )
+        } else if (funcStoreL6 != null) {
+            if (obj != null)
+                ret = funcStoreL6?.invoke(
+                    obj,
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4]
+                )
             else
-                ret = funcStoreL6?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4], valsWrapped[5])
-        }
-        else if(funcStoreL7 != null)
-        {
-            if(obj != null)
-                ret = funcStoreL7?.invoke(obj, valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4], valsWrapped[5])
+                ret = funcStoreL6?.invoke(
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4],
+                    valsWrapped[5]
+                )
+        } else if (funcStoreL7 != null) {
+            if (obj != null)
+                ret = funcStoreL7?.invoke(
+                    obj,
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4],
+                    valsWrapped[5]
+                )
             else
-                ret = funcStoreL7?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4], valsWrapped[5], valsWrapped[6])
-        }
-        else if(funcStoreL8 != null)
-        {
-            if(obj != null)
-                ret = funcStoreL8?.invoke(obj, valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4], valsWrapped[5], valsWrapped[6])
+                ret = funcStoreL7?.invoke(
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4],
+                    valsWrapped[5],
+                    valsWrapped[6]
+                )
+        } else if (funcStoreL8 != null) {
+            if (obj != null)
+                ret = funcStoreL8?.invoke(
+                    obj,
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4],
+                    valsWrapped[5],
+                    valsWrapped[6]
+                )
             else
-                ret = funcStoreL8?.invoke(valsWrapped[0], valsWrapped[1], valsWrapped[2], valsWrapped[3], valsWrapped[4], valsWrapped[5], valsWrapped[6], valsWrapped[7])
+                ret = funcStoreL8?.invoke(
+                    valsWrapped[0],
+                    valsWrapped[1],
+                    valsWrapped[2],
+                    valsWrapped[3],
+                    valsWrapped[4],
+                    valsWrapped[5],
+                    valsWrapped[6],
+                    valsWrapped[7]
+                )
         }
 
         val retWrapped: Any?
         ////TODO:ret is Unit not working ??
-        if(ret != null && ret.toString() != "kotlin.Unit") {
+        if (ret != null && ret.toString() != "kotlin.Unit") {
             if (ret is KTInterface) {
                 retWrapped = (ret as KTInterface).GetNativeObject()
-            }
-            else
+            } else
                 retWrapped = ret
-        }
-        else
+        } else
             retWrapped = NSNumber.numberWithInt(1)
 
         return retWrapped as NSObject?

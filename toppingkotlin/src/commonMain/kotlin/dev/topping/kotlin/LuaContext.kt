@@ -1,5 +1,7 @@
 package dev.topping.kotlin
 
+import dev.topping.kotlin.resource.TResources
+
 expect open class LuaContext {
     companion object {
         /**
@@ -17,7 +19,12 @@ expect open class LuaContext {
 
     /**
      * Starts form from created form intent
-     * @see dev.topping.android.LuaForm Create
+     * @see LuaForm Create
      */
     fun startForm(luaFormIntent: LuaFormIntent)
+
+    /**
+     * Gets resources
+     */
+    fun getResources() : TResources
 }

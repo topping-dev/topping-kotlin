@@ -1,5 +1,8 @@
 package dev.topping.kotlin
 
+import dev.topping.kotlin.resource.LuaBundle
+import dev.topping.kotlin.widgets.LGView
+
 actual open class ILuaFragment actual constructor(fragment: Any) : KTInterface {
     var iLuaFragment: cocoapods.Topping.ILuaFragment? = null
     private var fragment: LuaFragment
@@ -20,24 +23,29 @@ actual open class ILuaFragment actual constructor(fragment: Any) : KTInterface {
         inflater: LuaViewInflator,
         container: LGView?,
         savedInstanceState: LuaBundle?
-    ): LGView { return LGView()
+    ): LGView {
+        return dev.topping.kotlin.widgets.LGView()
     }
 
     actual open fun onCreate(savedInstanceState: LuaBundle?) {}
     actual open fun onViewCreated(
         view: LGView,
         savedInstanceState: LuaBundle?
-    ) {}
+    ) {
+    }
+
     actual open fun onResume() {}
     actual open fun onPause() {}
     actual open fun onDestroy() {}
-    actual fun getFragment(): LuaFragment { return fragment }
-    open override fun GetNativeObject(): Any?
-    {
+    actual fun getFragment(): LuaFragment {
+        return fragment
+    }
+
+    open override fun GetNativeObject(): Any? {
         return iLuaFragment
     }
-    open override fun SetNativeObject(par :Any?)
-    {
+
+    open override fun SetNativeObject(par: Any?) {
         iLuaFragment = par as cocoapods.Topping.ILuaFragment?
     }
 }

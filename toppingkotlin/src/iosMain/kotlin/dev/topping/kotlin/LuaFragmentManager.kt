@@ -1,34 +1,38 @@
 package dev.topping.kotlin
 
 import cocoapods.Topping.LGIdParser
+import dev.topping.kotlin.widgets.LGView
 
-actual open class LuaFragmentManager : KTInterface
-{
-   var luaFragmentManager: cocoapods.Topping.FragmentManager? = null
+actual open class LuaFragmentManager : KTInterface {
+    var luaFragmentManager: cocoapods.Topping.FragmentManager? = null
+
     actual companion object {
-        actual fun findFragment(view: LGView) : LuaFragment?
-        {
-            return KTWrap.Wrap(cocoapods.Topping.FragmentManager.findFragmentWithView(KTWrap.UnWrap(view) as cocoapods.Topping.LGView)) as LuaFragment?
+        actual fun findFragment(view: LGView): LuaFragment? {
+            return KTWrap.Wrap(
+                cocoapods.Topping.FragmentManager.findFragmentWithView(
+                    KTWrap.UnWrap(
+                        view
+                    ) as cocoapods.Topping.LGView
+                )
+            ) as LuaFragment?
         }
     }
 
-    actual fun findFragmentById(id: Any) : LuaFragment?
-    {
-        val idVal = if(id is LuaRef) LGIdParser.getInstance()?.getId(id.luaRef?.idRef) ?: "" else id as String
+    actual fun findFragmentById(id: Any): LuaFragment? {
+        val idVal = if (id is LuaRef) LGIdParser.getInstance()?.getId(id.luaRef?.idRef)
+            ?: "" else id as String
         return KTWrap.Wrap(luaFragmentManager?.findFragmentByIdWithId(idVal)) as LuaFragment?
     }
 
-    actual fun findFragmentByTag(tag: String) : LuaFragment?
-    {
+    actual fun findFragmentByTag(tag: String): LuaFragment? {
         return KTWrap.Wrap(luaFragmentManager?.findFragmentByTagWithTag(tag)) as LuaFragment?
     }
 
-    open override fun GetNativeObject(): Any?
-    {
+    open override fun GetNativeObject(): Any? {
         return luaFragmentManager
     }
-    open override fun SetNativeObject(par :Any?)
-    {
+
+    open override fun SetNativeObject(par: Any?) {
         luaFragmentManager = par as cocoapods.Topping.FragmentManager?
     }
 }

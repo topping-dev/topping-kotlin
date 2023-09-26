@@ -1,5 +1,7 @@
 package dev.topping.kotlin
 
+import dev.topping.kotlin.resource.LuaBundle
+
 /**
  * Form configuration intent
  */

@@ -1,5 +1,7 @@
 package dev.topping.kotlin
 
+import dev.topping.kotlin.widgets.LGView
+
 expect open class LuaViewInflator {
     companion object {
         /**

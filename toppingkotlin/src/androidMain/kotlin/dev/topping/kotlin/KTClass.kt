@@ -5,8 +5,7 @@ import kotlin.reflect.full.createInstance
 
 actual class KTClass {
     actual companion object {
-        actual fun createInstance(cls: KClass<*>) : Any?
-        {
+        actual fun createInstance(cls: KClass<*>): Any? {
             return cls.createInstance()
         }
     }
