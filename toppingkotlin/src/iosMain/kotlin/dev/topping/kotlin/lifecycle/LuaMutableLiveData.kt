@@ -1,5 +1,8 @@
 package dev.topping.kotlin.lifecycle
 
+import dev.topping.kotlin.KTWrap
+import platform.darwin.NSObject
+
 actual open class LuaMutableLiveData : LuaLiveData() {
     var luaMutableLiveData: cocoapods.Topping.LuaMutableLiveData? = null
 

@@ -1,5 +1,7 @@
 package dev.topping.kotlin.lifecycle
 
+import dev.topping.kotlin.KTWrap
+
 actual open class LuaMutableLiveData : LuaLiveData() {
     var luaMutableLiveData: dev.topping.android.LuaMutableLiveData? = null
 

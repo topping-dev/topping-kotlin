@@ -1,5 +1,9 @@
 package dev.topping.kotlin.lifecycle
 
+import dev.topping.kotlin.KTInterface
+import dev.topping.kotlin.KTWrap
+import dev.topping.kotlin.toLuaTranslator
+
 actual open class LuaLifecycle : KTInterface {
     var luaLifecycle: cocoapods.Topping.LuaLifecycle? = null
 

@@ -1,5 +1,9 @@
 package dev.topping.kotlin.navigation
 
+import dev.topping.kotlin.KTInterface
+import dev.topping.kotlin.KTWrap
+import dev.topping.kotlin.LuaRef
+
 actual open class LuaNavOptions : KTInterface {
     var luaNavOptions: cocoapods.Topping.NavOptions? = null
 

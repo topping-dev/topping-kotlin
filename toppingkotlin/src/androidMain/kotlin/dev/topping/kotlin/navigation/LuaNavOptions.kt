@@ -1,5 +1,8 @@
 package dev.topping.kotlin.navigation
 
+import dev.topping.kotlin.KTInterface
+import dev.topping.kotlin.LuaRef
+
 actual open class LuaNavOptions : KTInterface
 {
    var luaNavOptions: dev.topping.android.LuaNavOptions? = null

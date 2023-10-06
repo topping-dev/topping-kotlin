@@ -1,6 +1,8 @@
 package dev.topping.kotlin.resource
 
 import android.content.res.Resources
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.core.graphics.alpha
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
@@ -14,7 +16,7 @@ actual class TResources {
     }
 
     actual fun getBoolean(id: LuaRef): Boolean {
-        resources.getBoolean(id.luaRef!!.ref)
+        return resources.getBoolean(id.luaRef!!.ref)
     }
 
     actual fun getColor(id: LuaRef): LuaColor {
@@ -27,21 +29,23 @@ actual class TResources {
     }
 
     actual fun getDimension(id: LuaRef): Float {
-        resources.getDimension(id.luaRef!!.ref)
+        return resources.getDimension(id.luaRef!!.ref)
     }
 
     actual fun getDimensionPixelSize(id: LuaRef): Float {
-        resources.getDimensionPixelSize(id.luaRef!!.ref)
+        return resources.getDimensionPixelSize(id.luaRef!!.ref).toFloat()
     }
 
     actual fun getDrawable(id: LuaRef): TDrawable {
         TODO("Not yet implemented")
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     actual fun getFloat(id: LuaRef): Float {
         return resources.getFloat(id.luaRef!!.ref)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     actual fun getFont(id: LuaRef): TFont {
         return TFont(resources.getFont(id.luaRef!!.ref))
     }

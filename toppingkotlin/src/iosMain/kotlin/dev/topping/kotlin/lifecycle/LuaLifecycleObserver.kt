@@ -1,5 +1,9 @@
 package dev.topping.kotlin.lifecycle
 
+import dev.topping.kotlin.KTInterface
+import dev.topping.kotlin.libs.LuaNativeObject
+import dev.topping.kotlin.toLuaTranslator
+
 actual open class LuaLifecycleObserver : KTInterface {
     var luaLifecycleObserver: cocoapods.Topping.LuaLifecycleObserver? = null
 

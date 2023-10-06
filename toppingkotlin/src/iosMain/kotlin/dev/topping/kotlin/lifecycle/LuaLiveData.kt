@@ -1,5 +1,9 @@
 package dev.topping.kotlin.lifecycle
 
+import dev.topping.kotlin.KTInterface
+import dev.topping.kotlin.KTWrap
+import dev.topping.kotlin.toLuaTranslator
+
 actual open class LuaLiveData : KTInterface {
     var luaLiveData: cocoapods.Topping.LuaLiveData? = null
     var functionMap = mutableMapOf<(LuaLiveData, Any) -> Unit, cocoapods.Topping.LuaTranslator>()

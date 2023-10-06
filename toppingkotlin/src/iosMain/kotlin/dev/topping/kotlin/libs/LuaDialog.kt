@@ -1,5 +1,7 @@
 package dev.topping.kotlin.libs
 
+import dev.topping.kotlin.*
+
 actual open class LuaDialog : KTInterface {
     var luaDialog: cocoapods.Topping.LuaDialog? = null
 
