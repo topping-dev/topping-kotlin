@@ -2,6 +2,7 @@ package dev.topping.kotlin.widgets
 
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LGDatePicker : LGFrameLayout() {
     var lgDatePicker: cocoapods.Topping.LGDatePicker? = null
@@ -31,6 +32,7 @@ actual open class LGDatePicker : LGFrameLayout() {
         lgDatePicker?.updateDate(day, month, year)
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnDateChangedListener(func: ((LGDatePicker, Int, Int, Int) -> Unit)?) {
         lgDatePicker?.setOnDateChangedListener(func.toLuaTranslator(this))
     }

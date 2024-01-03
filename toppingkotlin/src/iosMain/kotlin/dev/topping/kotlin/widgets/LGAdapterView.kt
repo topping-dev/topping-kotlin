@@ -3,6 +3,7 @@ package dev.topping.kotlin.widgets
 import dev.topping.kotlin.KTInterface
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 import platform.darwin.NSObject
 
 actual open class LGAdapterView : KTInterface {
@@ -40,6 +41,7 @@ actual open class LGAdapterView : KTInterface {
         lgAdapterView?.clear()
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnAdapterView(func: (LGAdapterView, LGView, Int, Any, LGView, LuaContext) -> LGView) {
         lgAdapterView?.setOnAdapterView(func.toLuaTranslator(this))
     }

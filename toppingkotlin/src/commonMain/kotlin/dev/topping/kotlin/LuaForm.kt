@@ -91,4 +91,9 @@ expect open class LuaForm {
      * Get Fragment Manager
      */
     fun getFragmentManager(): LuaFragmentManager?
+
+    /**
+     * Get Native Form
+     */
+    fun getNativeForm(): Any
 }

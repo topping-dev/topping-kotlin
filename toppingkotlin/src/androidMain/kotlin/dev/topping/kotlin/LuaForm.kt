@@ -73,6 +73,10 @@ actual open class LuaForm : KTInterface {
         return fragmentManager
     }
 
+    actual fun getNativeForm(): Any {
+        return luaForm!!
+    }
+
     open override fun GetNativeObject(): Any? {
         return luaForm
     }

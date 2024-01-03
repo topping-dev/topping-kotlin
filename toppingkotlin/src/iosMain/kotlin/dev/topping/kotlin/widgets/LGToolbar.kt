@@ -2,6 +2,7 @@ package dev.topping.kotlin.widgets
 
 import dev.topping.kotlin.KTWrap
 import dev.topping.kotlin.LuaRef
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.StableRef
 
 actual open class LGToolbar : LGView() {
@@ -62,6 +63,7 @@ actual open class LGToolbar : LGView() {
         lgToolbar?.setSubtitleTextApperance(ref?.luaRef)
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setNavigationOnClickListener(func: ((LGToolbar) -> Unit)?) {
         val kt: KTWrap = KTWrap()
         val lt: cocoapods.Topping.LuaTranslator = cocoapods.Topping.LuaTranslator()
@@ -70,6 +72,7 @@ actual open class LGToolbar : LGView() {
         lgToolbar?.setNavigationOnClickListener(lt)
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setMenuItemClickListener(func: ((LGToolbar) -> Unit)?) {
         val kt: KTWrap = KTWrap()
         val lt: cocoapods.Topping.LuaTranslator = cocoapods.Topping.LuaTranslator()

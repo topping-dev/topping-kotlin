@@ -2,6 +2,7 @@ package dev.topping.kotlin.widgets
 
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 import platform.darwin.NSObject
 
 actual open class LGComboBox : LGEditText() {
@@ -38,6 +39,7 @@ actual open class LGComboBox : LGEditText() {
         return lgComboBox?.getSelectedTag()
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnComboChangedListener(func: ((LGComboBox, LuaContext, String, Any) -> Unit)?) {
         lgComboBox?.setOnComboChangedListener(func.toLuaTranslator(this))
     }

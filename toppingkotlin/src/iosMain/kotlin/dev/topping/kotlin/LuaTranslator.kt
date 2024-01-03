@@ -1,5 +1,6 @@
 package dev.topping.kotlin
 
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.StableRef
 import platform.darwin.NSObject
 import kotlin.reflect.KCallable
@@ -43,6 +44,7 @@ fun <V> KCallable<V>?.toLuaTranslator(obj: Any?): cocoapods.Topping.LuaTranslato
     return lt
 }*/
 
+@ExperimentalForeignApi
 fun <R> Function<R>.toLuaTranslator(obj: R?): cocoapods.Topping.LuaTranslator {
     val kt = KTWrap()
     val lt: cocoapods.Topping.LuaTranslator = cocoapods.Topping.LuaTranslator()
@@ -51,6 +53,7 @@ fun <R> Function<R>.toLuaTranslator(obj: R?): cocoapods.Topping.LuaTranslator {
     return lt
 }
 
+@ExperimentalForeignApi
 fun <R> Function<R>?.toLuaTranslator(obj: R?): cocoapods.Topping.LuaTranslator? {
     if (this == null)
         return null

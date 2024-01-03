@@ -2,6 +2,7 @@ package dev.topping.kotlin.widgets
 
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LGWebView : LGView() {
     var lgWebView: cocoapods.Topping.LGWebView? = null
@@ -51,6 +52,7 @@ actual open class LGWebView : LGView() {
         lgWebView?.goForward()
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setReqestAction(func: ((LGWebView, String) -> Boolean)?) {
         lgWebView?.setRequestAction(func.toLuaTranslator(this))
     }

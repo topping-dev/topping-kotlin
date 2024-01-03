@@ -2,6 +2,7 @@ package dev.topping.kotlin.widgets
 
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LGButton : LGTextView() {
     var lgButton: cocoapods.Topping.LGButton? = null
@@ -15,6 +16,7 @@ actual open class LGButton : LGTextView() {
         }
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     override fun SetOnClickListenerInternal(func: ((LGView, LuaContext) -> Unit)?): Boolean {
         lgButton?.setOnClickListener(func.toLuaTranslator(this))
         return true

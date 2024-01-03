@@ -16,6 +16,7 @@ import kotlin.reflect.KFunction6
 import kotlin.reflect.KFunction7
 import kotlin.reflect.KFunction8
 
+@OptIn(ExperimentalForeignApi::class)
 class KTWrap {
     companion object {
         fun Wrap(objIn: Any?): Any? {

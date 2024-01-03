@@ -1,5 +1,6 @@
 package dev.topping.kotlin
 
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlin.reflect.KCallable
 
 actual open class LuaEvent : KTInterface {
@@ -21,6 +22,7 @@ actual open class LuaEvent : KTInterface {
         actual val UI_EVENT_KEYDOWN: Int = 12
         actual val UI_EVENT_KEYUP: Int = 13
         actual val UI_EVENT_NFC: Int = 14
+        @OptIn(ExperimentalForeignApi::class)
         actual fun registerUIEvent(luaId: LuaRef, event: Int, func: Function<Any?>) {
             cocoapods.Topping.LuaEvent.registerUIEvent(
                 luaId.luaRef,
@@ -29,10 +31,12 @@ actual open class LuaEvent : KTInterface {
             )
         }
 
+        @OptIn(ExperimentalForeignApi::class)
         actual fun registerForm(clsName: String, func: (Any) -> ILuaForm) {
             cocoapods.Topping.LuaEvent.registerForm(clsName, func.toLuaTranslator(null))
         }
 
+        @OptIn(ExperimentalForeignApi::class)
         actual fun registerFragment(clsName: String, func: (Any) -> ILuaFragment) {
             cocoapods.Topping.LuaEvent.registerFragment(clsName, func.toLuaTranslator(null))
         }

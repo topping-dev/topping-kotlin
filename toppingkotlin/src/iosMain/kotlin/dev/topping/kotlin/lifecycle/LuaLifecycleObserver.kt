@@ -3,6 +3,7 @@ package dev.topping.kotlin.lifecycle
 import dev.topping.kotlin.KTInterface
 import dev.topping.kotlin.libs.LuaNativeObject
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LuaLifecycleObserver : KTInterface {
     var luaLifecycleObserver: cocoapods.Topping.LuaLifecycleObserver? = null
@@ -15,6 +16,7 @@ actual open class LuaLifecycleObserver : KTInterface {
         actual val ON_START: Int = 4
         actual val ON_STOP: Int = 5
 
+        @OptIn(ExperimentalForeignApi::class)
         actual fun create(func: (LuaNativeObject, Int) -> Unit): LuaLifecycleObserver {
             val pobj = LuaLifecycleObserver()
             val pres = cocoapods.Topping.LuaLifecycleObserver.create(func.toLuaTranslator(null))

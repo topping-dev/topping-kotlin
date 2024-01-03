@@ -2,6 +2,7 @@ package dev.topping.kotlin.widgets
 
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LGEditText : LGTextView() {
     var lgEditText: cocoapods.Topping.LGEditText? = null
@@ -15,14 +16,17 @@ actual open class LGEditText : LGTextView() {
         }
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setTextChangedListener(func: ((LGEditText, String) -> Unit)?) {
         lgEditText?.setTextChangedListener(func.toLuaTranslator(this))
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setBeforeTextChangedListener(func: ((LGEditText, String) -> Unit)?) {
         lgEditText?.setBeforeTextChangedListener(func.toLuaTranslator(this))
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setAfterTextChangedListener(func: ((LGEditText, String) -> Unit)?) {
         lgEditText?.setAfterTextChangedListener(func.toLuaTranslator(this))
     }

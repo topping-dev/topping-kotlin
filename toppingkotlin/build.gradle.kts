@@ -51,6 +51,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("reflect"))
+                implementation("androidx.compose.ui:ui:1.6.0-alpha06")
             }
         }
         val androidMain by getting {

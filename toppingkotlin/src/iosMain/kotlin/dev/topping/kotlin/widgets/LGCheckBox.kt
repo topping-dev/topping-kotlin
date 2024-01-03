@@ -2,6 +2,7 @@ package dev.topping.kotlin.widgets
 
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LGCheckBox : LGCompoundButton() {
     var lgCheckBox: cocoapods.Topping.LGCheckBox? = null
@@ -15,6 +16,7 @@ actual open class LGCheckBox : LGCompoundButton() {
         }
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnCheckedChangedListener(func: ((LGCheckBox, LuaContext, Boolean) -> Unit)?) {
         lgCheckBox?.setOnCheckedChangedListener(func.toLuaTranslator(this))
     }

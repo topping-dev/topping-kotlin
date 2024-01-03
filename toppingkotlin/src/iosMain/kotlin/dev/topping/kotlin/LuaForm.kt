@@ -68,6 +68,10 @@ actual open class LuaForm : KTInterface {
         return KTWrap.Wrap(luaForm?.getSupportFragmentManager()) as LuaFragmentManager
     }
 
+    actual fun getNativeForm(): Any {
+        return luaForm!!
+    }
+
     open override fun GetNativeObject(): Any? {
         return luaForm
     }

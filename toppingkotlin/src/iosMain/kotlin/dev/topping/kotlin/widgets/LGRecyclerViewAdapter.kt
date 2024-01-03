@@ -3,6 +3,7 @@ package dev.topping.kotlin.widgets
 import dev.topping.kotlin.KTInterface
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 import platform.darwin.NSObject
 
 actual open class LGRecyclerViewAdapter : KTInterface {
@@ -33,18 +34,22 @@ actual open class LGRecyclerViewAdapter : KTInterface {
         lgRecyclerViewAdapter?.notify()
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnItemSelected(func: ((LGRecyclerViewAdapter, LGView, LGView, Int, Any) -> Unit)?) {
         lgRecyclerViewAdapter?.setOnItemSelected(func.toLuaTranslator(this))
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnCreateViewHolder(func: ((LGRecyclerViewAdapter, LGView, Int, LuaContext) -> LGView)?) {
         lgRecyclerViewAdapter?.setOnCreateViewHolder(func.toLuaTranslator(this))
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnBindViewHolder(func: ((LGRecyclerViewAdapter, LGView, Int, Any) -> Unit)?) {
         lgRecyclerViewAdapter?.setOnBindViewHolder(func.toLuaTranslator(this))
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setGetItemViewType(func: ((LGRecyclerViewAdapter, Int) -> Int)?) {
         lgRecyclerViewAdapter?.setGetItemViewType(func.toLuaTranslator(this))
     }

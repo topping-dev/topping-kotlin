@@ -1,5 +1,8 @@
 package dev.topping.kotlin
 
+import kotlinx.cinterop.ExperimentalForeignApi
+
+@OptIn(ExperimentalForeignApi::class)
 actual open class ILuaForm actual constructor(form: Any) : KTInterface {
     var iLuaForm: cocoapods.Topping.ILuaForm? = null
     private var form: LuaForm

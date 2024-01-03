@@ -27,6 +27,10 @@ actual open class LuaContext : KTInterface {
         return TResources(luaContext?.context!!.resources)
     }
 
+    actual fun getNativeContext(): Any {
+        return luaContext?.context!!
+    }
+
     open override fun GetNativeObject(): Any? {
         return luaContext
     }

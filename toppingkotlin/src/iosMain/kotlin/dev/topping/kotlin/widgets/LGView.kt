@@ -3,6 +3,7 @@ package dev.topping.kotlin.widgets
 import dev.topping.kotlin.*
 import dev.topping.kotlin.navigation.LuaNavController
 import dev.topping.kotlin.resource.TDrawable
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LGView : KTInterface {
     var lgView: cocoapods.Topping.LGView? = null
@@ -28,6 +29,7 @@ actual open class LGView : KTInterface {
         lgView?.setBackground(background.luaRef)
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnClickListener(func: ((LGView, LuaContext) -> Unit)?) {
         if (SetOnClickListenerInternal(func))
             return

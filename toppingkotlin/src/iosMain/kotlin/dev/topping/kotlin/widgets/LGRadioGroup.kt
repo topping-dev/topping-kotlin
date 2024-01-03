@@ -2,6 +2,7 @@ package dev.topping.kotlin.widgets
 
 import dev.topping.kotlin.KTWrap
 import dev.topping.kotlin.LuaContext
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.StableRef
 
 actual open class LGRadioGroup : LGLinearLayout() {
@@ -16,6 +17,7 @@ actual open class LGRadioGroup : LGLinearLayout() {
         }
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnCheckedChangedListener(func: ((Int, Boolean) -> Unit)?) {
         val kt: KTWrap = KTWrap()
         val lt: cocoapods.Topping.LuaTranslator = cocoapods.Topping.LuaTranslator()

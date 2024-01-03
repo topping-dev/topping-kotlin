@@ -5,6 +5,7 @@ import dev.topping.kotlin.KTWrap
 import dev.topping.kotlin.LuaForm
 import dev.topping.kotlin.LuaFragment
 import kotlinx.cinterop.COpaquePointer
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.StableRef
 import kotlinx.cinterop.asStableRef
 
@@ -33,6 +34,7 @@ actual open class LuaViewModelProvider : KTInterface {
         return KTWrap.Wrap(luaViewModelProvider?.get(key)) as LuaViewModel
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual inline fun <reified T : Any> get(key: String, obj: T): T {
         return (luaViewModelProvider?.get(
             key, StableRef.create(obj)

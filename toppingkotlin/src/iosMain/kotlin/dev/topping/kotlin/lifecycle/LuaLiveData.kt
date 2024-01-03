@@ -3,6 +3,7 @@ package dev.topping.kotlin.lifecycle
 import dev.topping.kotlin.KTInterface
 import dev.topping.kotlin.KTWrap
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LuaLiveData : KTInterface {
     var luaLiveData: cocoapods.Topping.LuaLiveData? = null
@@ -18,6 +19,7 @@ actual open class LuaLiveData : KTInterface {
 
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun observe(owner: LuaLifecycleOwner, func: (LuaLiveData, Any) -> Unit) {
         val lt = func.toLuaTranslator(this)
         luaLiveData?.observeLua(owner.GetNativeObject() as cocoapods.Topping.LuaLifecycleOwner, lt)

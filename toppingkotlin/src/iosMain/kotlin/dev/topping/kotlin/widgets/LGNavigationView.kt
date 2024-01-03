@@ -3,6 +3,7 @@ package dev.topping.kotlin.widgets
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.libs.LuaMenu
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LGNavigationView : LGLinearLayout() {
     var lgNavigationView: cocoapods.Topping.LGNavigationView? = null
@@ -16,6 +17,7 @@ actual open class LGNavigationView : LGLinearLayout() {
         }
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setNavigationItemSelectListener(func: ((LGNavigationView, LuaMenu) -> Unit)?) {
         lgNavigationView?.setNavigationItemSelectListener(func.toLuaTranslator(this))
     }

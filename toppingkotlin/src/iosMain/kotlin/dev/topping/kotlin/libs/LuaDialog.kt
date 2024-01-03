@@ -1,6 +1,7 @@
 package dev.topping.kotlin.libs
 
 import dev.topping.kotlin.*
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LuaDialog : KTInterface {
     var luaDialog: cocoapods.Topping.LuaDialog? = null
@@ -91,10 +92,12 @@ actual open class LuaDialog : KTInterface {
         luaDialog?.dismiss()
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setDateSelectedListener(func: ((LuaDialog, Int, Int, Int) -> Unit)?) {
         luaDialog?.setDateSelectedListener(func.toLuaTranslator(this))
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setTimeSelectedListener(func: ((LuaDialog, Int, Int, Int) -> Unit)?) {
         luaDialog?.setTimeSelectedListener(func.toLuaTranslator(this))
     }

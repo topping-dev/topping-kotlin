@@ -2,7 +2,9 @@ package dev.topping.kotlin
 
 import dev.topping.kotlin.widgets.LGRecyclerViewAdapter
 import dev.topping.kotlin.widgets.LGView
+import kotlinx.cinterop.ExperimentalForeignApi
 
+@OptIn(ExperimentalForeignApi::class)
 actual open class ILGRecyclerViewAdapter actual constructor(adapter: Any) : KTInterface {
     var iLgRecyclerViewAdapter: cocoapods.Topping.ILGRecyclerViewAdapter? = null
     private var adapter: LGRecyclerViewAdapter

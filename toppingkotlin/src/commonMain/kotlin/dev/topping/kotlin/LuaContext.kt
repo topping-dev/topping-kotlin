@@ -27,4 +27,9 @@ expect open class LuaContext {
      * Gets resources
      */
     fun getResources() : TResources
+
+    /**
+     * Gets native context
+     */
+    fun getNativeContext() : Any
 }

@@ -15,6 +15,7 @@ actual class TResources {
         return resources.getBooleanValue(id.luaRef!!.idRef!!, false)
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun getColor(id: LuaRef): LuaColor {
         //TODO: Tidy this up?
         val c = LGColorParser.getInstance()!!.parseColor(id.luaRef!!.idRef!!)!!

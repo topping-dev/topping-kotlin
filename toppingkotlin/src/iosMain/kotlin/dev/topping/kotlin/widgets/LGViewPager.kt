@@ -3,6 +3,7 @@ package dev.topping.kotlin.widgets
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.libs.LuaTab
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LGViewPager : LGViewGroup() {
     var lgViewPager: cocoapods.Topping.LGViewPager? = null
@@ -20,6 +21,7 @@ actual open class LGViewPager : LGViewGroup() {
         lgViewPager?.setAdapter(lgFragmentStateAdapter.lgFragmentStateAdapter)
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setTabLayout(lgTabLayout: LGTabLayout, func: (Int) -> LuaTab) {
         lgViewPager?.setTabLayout(lgTabLayout.lgTabLayout, func.toLuaTranslator(null))
     }

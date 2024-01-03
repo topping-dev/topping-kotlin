@@ -2,6 +2,7 @@ package dev.topping.kotlin.widgets
 
 import dev.topping.kotlin.*
 import dev.topping.kotlin.lifecycle.LuaLifecycle
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LGFragmentStateAdapter : KTInterface {
     var lgFragmentStateAdapter: cocoapods.Topping.LGFragmentStateAdapter? = null
@@ -39,10 +40,12 @@ actual open class LGFragmentStateAdapter : KTInterface {
         }
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setCreateFragment(func: (Int) -> LuaFragment) {
         lgFragmentStateAdapter?.setCreateFragment(func.toLuaTranslator(null))
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setGetItemCount(func: () -> Int) {
         lgFragmentStateAdapter?.setGetItemCount(func.toLuaTranslator(null))
     }

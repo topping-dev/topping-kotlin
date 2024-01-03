@@ -2,6 +2,7 @@ package dev.topping.kotlin.widgets
 
 import dev.topping.kotlin.LuaContext
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 
 actual open class LGBottomNavigationView : LGFrameLayout() {
     var lgBottomNavigationView: cocoapods.Topping.LGBottomNavigationView? = null
@@ -15,10 +16,12 @@ actual open class LGBottomNavigationView : LGFrameLayout() {
         }
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setTabSelectedListener(func: ((LGBottomNavigationView, Int) -> Unit)?) {
         lgBottomNavigationView?.setTabSelectedListener(func.toLuaTranslator(this));
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setCanSelectTab(func: ((LGBottomNavigationView, Int) -> Boolean)?) {
         lgBottomNavigationView?.setCanSelectTab(func.toLuaTranslator(this));
     }

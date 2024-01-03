@@ -2,6 +2,7 @@ package dev.topping.kotlin.libs
 
 import dev.topping.kotlin.KTInterface
 import dev.topping.kotlin.toLuaTranslator
+import kotlinx.cinterop.ExperimentalForeignApi
 import platform.darwin.NSObject
 
 actual open class LuaHttpClient : KTInterface {
@@ -63,10 +64,12 @@ actual open class LuaHttpClient : KTInterface {
         luaHttpClient?.setTimeout(timeout!!)
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnFinishListener(func: ((LuaHttpClient, String) -> Unit)?) {
         luaHttpClient?.setOnFinishListener(func.toLuaTranslator(this))
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     actual fun setOnFailListener(func: ((LuaHttpClient, String) -> Unit)?) {
         luaHttpClient?.setOnFailListener(func.toLuaTranslator(this))
     }

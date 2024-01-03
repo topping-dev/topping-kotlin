@@ -2,7 +2,9 @@ package dev.topping.kotlin
 
 import dev.topping.kotlin.resource.LuaBundle
 import dev.topping.kotlin.widgets.LGView
+import kotlinx.cinterop.ExperimentalForeignApi
 
+@OptIn(ExperimentalForeignApi::class)
 actual open class ILuaFragment actual constructor(fragment: Any) : KTInterface {
     var iLuaFragment: cocoapods.Topping.ILuaFragment? = null
     private var fragment: LuaFragment
