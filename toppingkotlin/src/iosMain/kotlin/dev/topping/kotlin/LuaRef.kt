@@ -2,6 +2,10 @@ package dev.topping.kotlin
 
 actual open class LuaRef : KTInterface {
     var luaRef: cocoapods.Topping.LuaRef? = null
+    actual val compose: Any
+        get() {
+            return luaRef!!
+        }
 
     actual companion object {
         actual fun withValue(key: String, obj: Any): LuaRef {

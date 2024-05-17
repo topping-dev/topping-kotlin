@@ -19,13 +19,13 @@ actual open class LuaFragment : KTInterface {
         actual fun create(
             lc: LuaContext,
             luaId: LuaRef,
-            args: MutableMap<String, Any>
+            args: LuaBundle
         ): LuaFragment {
             val pobj = LuaFragment()
             val pres = cocoapods.Topping.LuaFragment.create(
                 lc.luaContext,
                 luaId.luaRef,
-                args.toNSMutableDictionary()
+                args.luaBundle
             )
             pobj.SetNativeObject(pres)
             return pobj
@@ -35,14 +35,14 @@ actual open class LuaFragment : KTInterface {
             lc: LuaContext,
             luaId: LuaRef,
             ui: LuaRef,
-            args: MutableMap<String, Any>
+            args: LuaBundle
         ): LuaFragment {
             val pobj = LuaFragment()
             val pres = cocoapods.Topping.LuaFragment.createWithUI(
                 lc.luaContext,
                 luaId.luaRef,
                 ui.luaRef,
-                args.toNSMutableDictionary()
+                args.luaBundle
             )
             pobj.SetNativeObject(pres)
             return pobj
@@ -89,7 +89,7 @@ actual open class LuaFragment : KTInterface {
     }
 
     actual open fun getArguments(): LuaBundle {
-        return KTWrap.Wrap(luaFragment?.getArgumentsBundle()) as LuaBundle
+        return KTWrap.Wrap(luaFragment?.getArguments()) as LuaBundle
     }
 
     actual open fun getNavController(): LuaNavController {

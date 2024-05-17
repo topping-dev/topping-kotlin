@@ -27,7 +27,7 @@ expect open class LuaFragment() {
          * @param args
          * @return LuaFragment
          */
-        fun create(lc: LuaContext, luaId: LuaRef, args: MutableMap<String, Any>): LuaFragment
+        fun create(lc: LuaContext, luaId: LuaRef, args: LuaBundle): LuaFragment
 
         /**
          * Creates LuaFragment Object From Lua with ui.
@@ -41,7 +41,7 @@ expect open class LuaFragment() {
             lc: LuaContext,
             luaId: LuaRef,
             ui: LuaRef,
-            args: MutableMap<String, Any>
+            args: LuaBundle
         ): LuaFragment
     }
 

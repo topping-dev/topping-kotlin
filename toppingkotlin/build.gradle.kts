@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.BitcodeEmbeddingMode
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 
 plugins {
@@ -27,7 +28,8 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "toppingkotlin"
-            embedBitcode(org.jetbrains.kotlin.gradle.plugin.mpp.Framework.BitcodeEmbeddingMode.DISABLE)
+            isStatic = false
+            //embedBitcode(BitcodeEmbeddingMode.DISABLE)
             xcf.add(this)
         }
     }
@@ -38,12 +40,12 @@ kotlin {
         specRepos {
             url("https://github.com/Deadknight/dk-specs.git")
         }
-        //pod("ToppingIOSKotlinHelper", project.ext["versionStr"].toString())
         pod("Topping", project.ext["versionStr"].toString())
         framework {
             // ---> HERE: If true (or omitted) linking fails, missing symbols are from "Topping" dependency
             // if false, then linking succeeds as per Kotlin 1.7 behaviour
             isStatic = false
+            embedBitcode(BitcodeEmbeddingMode.DISABLE)
         }
     }
 
@@ -51,7 +53,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("reflect"))
-                implementation("androidx.compose.ui:ui:1.6.0-alpha06")
             }
         }
         val androidMain by getting {

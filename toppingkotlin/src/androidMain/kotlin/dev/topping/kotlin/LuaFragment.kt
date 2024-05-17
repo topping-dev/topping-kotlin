@@ -19,10 +19,10 @@ actual open class LuaFragment : KTInterface {
         actual fun create(
             lc: LuaContext,
             luaId: LuaRef,
-            args: MutableMap<String, Any>
+            args: LuaBundle
         ): LuaFragment {
             val pobj = LuaFragment()
-            val pres = dev.topping.android.LuaFragment.create(lc.luaContext!!, luaId.luaRef, args)
+            val pres = dev.topping.android.LuaFragment.create(lc.luaContext!!, luaId.luaRef, null)
             pobj.SetNativeObject(pres)
             return pobj
         }
@@ -31,14 +31,14 @@ actual open class LuaFragment : KTInterface {
             lc: LuaContext,
             luaId: LuaRef,
             ui: LuaRef,
-            args: MutableMap<String, Any>
+            args: LuaBundle
         ): LuaFragment {
             val pobj = LuaFragment()
             val pres = dev.topping.android.LuaFragment.createWithUI(
                 lc.luaContext!!,
                 luaId.luaRef,
                 ui.luaRef,
-                args
+                null //TODO
             )
             pobj.SetNativeObject(pres)
             return pobj
