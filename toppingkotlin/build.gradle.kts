@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "dev.topping"
-version = "0.6.0"
+version = "0.6.1"
 
 project.ext.set("versionStr", version)
 
